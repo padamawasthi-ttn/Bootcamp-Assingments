@@ -1,0 +1,2 @@
+User{firstname='Padam', lastname='Awasthi', age=25, phonenumber=9889776060}
+User{firstname='Sarabh', lastname='Singh', age=23, phonenumber=863024599}
