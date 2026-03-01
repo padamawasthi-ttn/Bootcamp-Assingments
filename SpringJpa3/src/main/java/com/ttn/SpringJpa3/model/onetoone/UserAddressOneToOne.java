@@ -1,5 +1,6 @@
 package com.ttn.SpringJpa3.model.onetoone;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,16 +11,16 @@ import lombok.Setter;
 @Setter
 @Getter
 @Entity
-public class BookOneToOne {
+public class UserAddressOneToOne {
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
     Long id;
 
-    private String bookName;
+    private String Address;
 
 
-    //bidirectional
-    @ManyToOne(cascade = CascadeType.ALL )
-    @JoinColumn(name="author_ref", referencedColumnName = "authorId")
-    private AuthorOneToOne author;
+//    //bidirectional
+    @OneToOne(mappedBy = "addressOneToOne")
+    @JsonBackReference
+    private UserDetailsOneToOne userDetailsOneToOne;
 }

@@ -1,30 +1,29 @@
 package com.ttn.SpringJpa3.model.onetoone;
 
 
-import com.ttn.SpringJpa3.model.Address;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
-
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class AuthorOneToOne {
+public class UserDetailsOneToOne {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    Long id;
+    Integer id;
 
     private String name;
 
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "books_id")
-    private BookOneToOne bookOneToOne;
+    @OneToOne(cascade = CascadeType.ALL )
+    @JoinColumn(name="addressId")
+    @JsonManagedReference
+    private UserAddressOneToOne addressOneToOne;
 }

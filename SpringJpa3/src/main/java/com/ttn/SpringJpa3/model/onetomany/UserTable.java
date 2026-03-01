@@ -1,14 +1,13 @@
 package com.ttn.SpringJpa3.model.onetomany;
 
 
-import com.ttn.SpringJpa3.model.Address;
-import com.ttn.SpringJpa3.model.onetoone.BookOneToOne;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -16,7 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class AuthorOneToMany {
+public class UserTable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,12 +23,6 @@ public class AuthorOneToMany {
 
     private String name;
 
-    @Embedded
-    private Address addressModel;
-    @ElementCollection
-    private List<String> subjects;
-
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "books_ref_id" ,referencedColumnName = "books_id")
-    private List<BookOneToOne> bookOneToOne2;
+    private List<OrdersTable> ordersDetails= new ArrayList<>();
 }
